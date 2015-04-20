@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<head>
+
+    <wicket:link>
+        <title>Wicket Examples - component reference</title>
+        <link rel="stylesheet" type="text/css" href="js/style.css"/>
+        <link rel="stylesheet" href="js/leaflet.css"/>
+        <script type="text/javascript" language="javascript" src="js/leaflet.js"></script>
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    </wicket:link>
+
+    <script>
+        var isVisible = true;
+        var isHidden = false;
+
+        $(function () {
+            $("#infotitle").click(function () {
+                $('#infopanel').toggle();
+                isVisible = $("#infopanel").is(":visible");
+                isHidden = $("#infopanel").is(":hidden");
+                calcHeight();
+
+            });
+
+            calcHeight();
+
+        });
+
+        function calcHeight() {
+
+            if (isVisible) {
+                $('.content-oi-left').height(Math.round($(window).height() - 350));
+                $('.content-poi-right').height(Math.round($(window).height() - 230));
+                $('#map').height(Math.round($(window).height() - 275));
+            }
+            else {
+                $('.content-poi-left').height(Math.round($(window).height() - 200));
+                $('.content-poi-right').height(Math.round($(window).height() - 80));
+                $('#map').height(Math.round($(window).height() - 200));
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div id="infotitle">
+    <div class="infotext">
+        <h3>Title</h3>Click to show/hide panel.
+    </div>
+
+</div>
+<div id="infopanel">
+    <div class="infotext">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+        takimata sanctus est Lorem ipsum dolor sit amet.
+    </div>
+</div>
+
+<div wicket:id="mapPanel"></div>
+
+</body>
+</html>
